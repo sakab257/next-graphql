@@ -40,7 +40,7 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
   const [offset, setOffset] = useState(0);
   const uid = useId();
   const pathId = `curve-${uid}`;
-  const pathD = `M-100,40 Q500,${40 + curveAmount} 1540,40`;
+  const pathD = `M-100,60 Q720,${60 + curveAmount} 1540,60`;
 
   const dragRef = useRef(false);
   const lastXRef = useRef(0);
@@ -49,7 +49,7 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
 
   const textLength = spacing;
   const totalText = textLength
-    ? Array(Math.ceil(1800 / textLength) + 2)
+    ? Array(Math.ceil(2400 / textLength) + 3)
       .fill(text)
       .join("")
     : text;
@@ -129,7 +129,7 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
 
   return (
     <div
-      className="max-h-full flex items-center justify-center w-full"
+      className="max-h-full flex items-center justify-center w-full -my-2"
       style={{ visibility: ready ? "visible" : "hidden", cursor: cursorStyle }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
@@ -137,8 +137,9 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
       onPointerLeave={endDrag}
     >
       <svg
-        className="select-none w-full overflow-visible block aspect-[100/12] text-[6rem] font-bold uppercase leading-none"
+        className="select-none w-full overflow-visible block aspect-[100/8] text-[4rem] font-bold uppercase leading-none"
         viewBox="0 0 1440 120"
+        preserveAspectRatio="xMidYMid meet"
       >
         <text
           ref={measureRef}

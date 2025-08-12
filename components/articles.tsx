@@ -5,42 +5,49 @@ import { query } from "@/lib/query";
 
 export default async function Articles() {
   try {
-    const articles = await fetchArticles();
-    // const articles = query.data.testgraphqlvuesGraphql1.results
+    // const articles = await fetchArticles();
+    const articles = query.data.testgraphqlvuesGraphql1.results
 
     return (
       <>
-        {articles.map((article, index) => (
-          <div
-            key={index}
-            className={`flex w-full gap-2 ${index % 2 !== 0 ? 'flex-row-reverse' : ''}`}
-          >
-            {article.image && (
-              <Image
-                src={`http://localhost:8084${article.image}`}
-                alt={article.title}
-                width={500}
-                height={300}
-                className="border-3 border-black"
-              />
-            )}
-            <div className="w-full flex flex-col items-center gap-2 border-3">
-              {article.tags && (
-                <p className="uppercase w-full border-b-3 px-2 py-1">
-                  {article.tags}
-                </p>
+        <div className="space-y-8">
+          <h1 className="text-3xl m-0 mb-3 pb-3 uppercase w-full border-b-2 border-black">Dernières Infos</h1>
+          {articles.map((article, index) => (
+            <div
+              key={index}
+              className={`flex w-full h-80 gap-6 items-stretch ${index % 2 !== 0 ? 'flex-row-reverse' : ''}`}
+            >
+              {article.image && (
+                <div className="flex-shrink-0 w-1/2 h-full">
+                  <Image
+                    src={article.image}
+                    alt={article.title}
+                    width={500}
+                    height={300}
+                    className="h-full w-full object-cover border-2 border-black"
+                  />
+                </div>
               )}
-              <h2 className={`text-4xl font-bold text-center border-b-3 w-full ${newsreader.className}`}>
-                {article.title}
-              </h2>
-              {article.body && (
-                <p className={`text-center h-full w-1/2 flex items-center justify-center ${montserrat.className}`}>
-                  {article.body}
-                </p>
-              )}
+              <div className={`flex flex-col gap-4 p-6 border-2 border-black w-1/2 h-full justify-between`}>
+                {article.tags && (
+                  <div className="border-b-2 border-black pb-2">
+                    <p className="uppercase text-sm font-semibold text-gray-600">
+                      {article.tags}
+                    </p>
+                  </div>
+                )}
+                <h2 className={`text-3xl font-bold leading-tight ${newsreader.className}`}>
+                  {article.title}
+                </h2>
+                {article.body && (
+                  <p className={`text-base leading-relaxed text-sm ${montserrat.className}`}>
+                    {article.body}
+                  </p>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </>
     );
   } catch (error) {

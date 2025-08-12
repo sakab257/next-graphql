@@ -11,7 +11,6 @@ const Home = () => {
       <div className='h-full w-full'>
         <Navbar />
       <div className='flex'>
-
           <div className='w-5/6 flex flex-col gap-2 p-2'>
             <Articles />
           </div>

@@ -3,14 +3,14 @@ import CurvedLoop from './loop';
 
 const Navbar = () => {
   return (
-    <div className='h-16 w-full text-black'>
+    <div className='w-full text-black overflow-hidden mt-3 -mb-5'>
       <CurvedLoop
-        marqueeText="Be ✦ Creative ✦ With ✦ React ✦ Bits ✦"
-        speed={1}
-        curveAmount={0}
-        direction="right"
+        marqueeText="Honey ✦ Drop ✦ News ✦"
+        speed={2}
+        curveAmount={20}
+        direction="left"
         interactive={true}
-        className="translate-x-4"
+        className="text-black font-bold"
       />
     </div>
     // <section className="container">
