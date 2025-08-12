@@ -2,16 +2,20 @@ import Image from "next/image";
 import { newsreader, montserrat } from "../lib/font";
 import { fetchArticles } from "../lib/data";
 import { query } from "@/lib/query";
+import SimpleDate from "./date";
 
 export default async function Articles() {
   try {
-    // const articles = await fetchArticles();
+    // const articles = await fetchArticles(); Utiliser ça au taff pour drupal pcq a la maison j'ai pas la db
     const articles = query.data.testgraphqlvuesGraphql1.results
 
     return (
       <>
         <div className="space-y-8">
-          <h1 className="text-3xl m-0 mb-3 pb-3 uppercase w-full border-b-2 border-black">Dernières Infos</h1>
+          <div className="flex items-center justify-between w-full border-b-2 border-black text-2xl uppercase">
+            <h1>Dernières Infos</h1>
+            <SimpleDate />
+          </div>
           {articles.map((article, index) => (
             <div
               key={index}
