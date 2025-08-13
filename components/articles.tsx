@@ -16,13 +16,13 @@ export default async function Articles() {
             <h1>Les aventures d'honey drop</h1>
             <SimpleDate />
           </div>
-          {articles.slice(0,5).map((article, index) => (
+          {articles.map((article, index) => (
             <div
               key={index}
               className={`flex w-full h-80 gap-6 items-stretch ${index % 2 !== 0 ? 'flex-row-reverse' : ''}`}
             >
               {article.image && (
-                <div className="flex-shrink-0 w-1/7 h-full">
+                <div className="flex-shrink-0 w-1/5 h-full">
                   <Image
                     src={`${article.image}`} // mettre ${article.image quand pas acces au back drupal} http://localhost:8084
                     alt={article.title}
@@ -32,7 +32,7 @@ export default async function Articles() {
                   />
                 </div>
               )}
-              <div className={`flex flex-col gap-4 p-6 border-2 border-black w-6/7 h-full justify-start`}>
+              <div className={`flex flex-col gap-4 p-6 border-3 border-black w-4/5 h-full justify-start`}>
                 {article.tags && (
                   <div className="border-b-2 border-black pb-2">
                     <p className="uppercase text-sm font-semibold">
@@ -41,7 +41,7 @@ export default async function Articles() {
                   </div>
                 )}
                 <div className="flex-1 flex flex-col items-center justify-evenly">
-                  <h2 className={`text-3xl font-bold leading-tight uppercase ${newsreader.className}`}>
+                  <h2 className={`text-3xl font-bold leading-tight uppercase text-center ${newsreader.className}`}>
                     {article.title}
                   </h2>
                   {article.body && (

@@ -4,6 +4,18 @@ export const query = {
       "results": [
         {
           "body": "Hier, au coeur du quartier, un individu est entré dans la boulangerie Kayser armé de son fusil à eau. Après s'être exclamé 'Donne moi tout le Selecto ou je t'arrose !', le commerçant lui a simplement tendu une assiette de Makrout en lui disant : 'Je sais que ça va mal, tiens... pour te remonter le moral'. Le suspect s'en alla en pleurant tellement que les makrout sont devenus tout moux. La police est toujours à la recherche du suspect, désormais connu comme 'El Bandito, la Terreur au Selecto'",
+          "image": "/ali_biceps.png",//"/sites/default/files/2025-08/greece.jpg"
+          "title": "Mutation du corps d'Ali... Son biceps prend vie !",
+          "tags": "ali"
+        },
+        {
+          "body": "En arrivant sur le circuit, Johana était persuadée de se trouver sur les grands circuits de Monaco et de suivre les pas de grands pilotes. Etonée par l'absence de yachts et de paparazzis, elle a tout de même pris le départ, doublant et se moquant d'enfants de 8 ans... A l'arrivée, elle demanda ou se trouva son trophée en or, et elle reçu un ticket pour le film F1 (film qu'elle a déjà vu mais qu'elle va revoir évidemment).",
+          "image": "/johana_karting.jpg",//"/sites/default/files/2025-08/greece.jpg"
+          "title": "Johana qui croit participer au grand prix de Monaco.",
+          "tags": "johana"
+        },
+        {
+          "body": "Hier, au coeur du quartier, un individu est entré dans la boulangerie Kayser armé de son fusil à eau. Après s'être exclamé ''Donne moi tout le Selecto ou je t'arrose !'', le commerçant lui a simplement tendu une assiette de Makrout en lui disant : ''Je sais que ça va mal, tiens... pour te remonter le moral''. Le suspect s'en alla en pleurant tellement que les makrout sont devenus tout moux. La police est toujours à la recherche du suspect, désormais connu comme 'El Bandito, la Terreur au Selecto'",
           "image": "/bilel_fusil.jpeg",//"/sites/default/files/2025-08/greece.jpg"
           "title": "Braquage de la boulangerie Kayser... Le suspect toujours en cavale.",
           "tags": "bilel"
@@ -21,7 +33,7 @@ export const query = {
           "tags": "bilel"
         },
         {
-          "body": "Scène de panique hier au bureau. Bilel a bu trois gorgées d'eau en pensant ouvrir un Hamoud Boua3lem bien frais. Les témoins racontent qu'il a immédiatement crié : 'Frère il est périmé ce Hamoud ou c'est moi !', avant de vérifier la date et de voir que ce n'était que de l'eau. Sous le choc, il a demandé à un collègue de lui faire un massage... mais à base de Selecto pour s'en remettre. Résultat : Il pétillait encore plus que la bouteille !",
+          "body": "Scène de panique hier au bureau. Bilel a bu trois gorgées d'eau en pensant ouvrir un Hamoud Boua3lem bien frais. Les témoins racontent qu'il a immédiatement crié : ''Frère il est périmé ce Hamoud ou c'est moi !'', avant de vérifier la date et de voir que ce n'était que de l'eau. Sous le choc, il a demandé à un collègue de lui faire un massage... mais à base de Selecto pour s'en remettre. Résultat : Il pétillait encore plus que la bouteille !",
           "image": "/bilel_bouteille.jpeg", // "/sites/default/files/2025-07/wave.jpg"
           "title": "Énorme drame au bureau... Bilel confond Eau et Hamoud Boua3lem.",
           "tags": "bilel"

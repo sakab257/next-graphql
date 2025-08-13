@@ -14,7 +14,7 @@ const Home = () => {
           <div className='w-5/6 flex flex-col gap-2 p-2'>
             <Articles />
           </div>
-          <div className='w-1/6 flex flex-col gap-2 relative'>
+          <div className='w-1/6 flex flex-col gap-2 relative p-2'>
             <Sidebar />
           </div>
       </div>
