@@ -13,40 +13,6 @@ const Navbar = () => {
         className="text-black font-bold"
       />
     </div>
-    // <section className="container">
-    //   <div className="list">
-    //     <div className="item">
-    //       <span className="item-txt">HONEY</span>
-    //       <span className="item-d">
-    //         <p className="item-dot">✦</p>
-    //       </span>
-    //       <span className="item-txt">DROP</span>
-    //       <span className="item-d">
-    //         <p className="item-dot">✦</p>
-    //       </span>
-    //       <span className="item-txt">NEWS</span>
-    //       <span className="item-d">
-    //         <p className="item-dot">✦</p>
-    //       </span>
-    //     </div>
-    //   </div>
-    //   <div className="list">
-    //     <div className="item">
-    //       <span className="item-txt">HONEY</span>
-    //       <span className="item-d">
-    //         <p className="item-dot">✦</p>
-    //       </span>
-    //       <span className="item-txt">DROP</span>
-    //       <span className="item-d">
-    //         <p className="item-dot">✦</p>
-    //       </span>
-    //       <span className="item-txt">NEWS</span>
-    //       <span className="item-d">
-    //         <p className="item-dot">✦</p>
-    //       </span>
-    //     </div>
-    //   </div>
-    // </section>
   );
 };
 

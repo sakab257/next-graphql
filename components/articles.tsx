@@ -6,8 +6,8 @@ import SimpleDate from "./date";
 
 export default async function Articles() {
   try {
-    // const articles = await fetchArticles(); Utiliser ça au taff pour drupal pcq a la maison j'ai pas la db
-    const articles = query.data.testgraphqlvuesGraphql1.results
+    const articles = await fetchArticles(); // Utiliser ça au taff pour drupal pcq a la maison j'ai pas la db
+    // const articles = query.data.testgraphqlvuesGraphql1.results
 
     return (
       <>
@@ -16,7 +16,7 @@ export default async function Articles() {
             <h1>Dernières Infos</h1>
             <SimpleDate />
           </div>
-          {articles.map((article, index) => (
+          {articles.slice(0,5).map((article, index) => (
             <div
               key={index}
               className={`flex w-full h-80 gap-6 items-stretch ${index % 2 !== 0 ? 'flex-row-reverse' : ''}`}
@@ -24,7 +24,7 @@ export default async function Articles() {
               {article.image && (
                 <div className="flex-shrink-0 w-1/2 h-full">
                   <Image
-                    src={article.image}
+                    src={`http://localhost:8084${article.image}`} // mettre ${article.image quand pas acces au back drupal}
                     alt={article.title}
                     width={500}
                     height={300}
@@ -32,22 +32,24 @@ export default async function Articles() {
                   />
                 </div>
               )}
-              <div className={`flex flex-col gap-4 p-6 border-2 border-black w-1/2 h-full justify-between`}>
+              <div className={`flex flex-col gap-4 p-6 border-2 border-black w-1/2 h-full justify-start`}>
                 {article.tags && (
                   <div className="border-b-2 border-black pb-2">
-                    <p className="uppercase text-sm font-semibold text-gray-600">
-                      {article.tags}
+                    <p className="uppercase text-sm font-semibold">
+                      {article.tags.includes(',') ? article.tags.split(',').join(' &') : article.tags}
                     </p>
                   </div>
                 )}
-                <h2 className={`text-3xl font-bold leading-tight ${newsreader.className}`}>
-                  {article.title}
-                </h2>
-                {article.body && (
-                  <p className={`text-base leading-relaxed text-sm ${montserrat.className}`}>
-                    {article.body}
-                  </p>
-                )}
+                <div className="flex-1 flex flex-col items-center justify-evenly">
+                  <h2 className={`text-3xl font-bold leading-tight ${newsreader.className}`}>
+                    {article.title}
+                  </h2>
+                  {article.body && (
+                    <p className={`leading-relaxed text-sm ${montserrat.className}`}>
+                      {article.body}
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
           ))}
