@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Equipe = () => {
-  const personnes = ['bilel', 'aichatou', 'ange', 'alice', 'johana', 'ali','☠️ salim ☠️','mohammed','thomas']
+  const personnes = ['bilel', 'aichatou', 'ange', 'alice', 'johana', 'ali','salim','mohammed','thomas']
   return (
     <>
       {personnes.map((personne, index)=>{

@@ -1,5 +1,5 @@
 import React from 'react'
-import Filtres from './filtres'
+import Filtres from './equipe'
 
 const Sidebar = () => {
   return (
