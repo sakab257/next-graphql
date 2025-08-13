@@ -4,10 +4,20 @@ import { fetchArticles } from "../lib/data";
 import { query } from "@/lib/query";
 import SimpleDate from "./date";
 
-export default async function Articles() {
+interface ArticlesProps {
+  selectedTag?: string | null;
+}
+
+export default function Articles({ selectedTag }: ArticlesProps) {
   try {
     // const articles = await fetchArticles(); // Utiliser ça au taff pour drupal pcq a la maison j'ai pas la db
-    const articles = query.data.testgraphqlvuesGraphql1.results
+    const allArticles = query.data.testgraphqlvuesGraphql1.results
+    
+    const articles = selectedTag 
+      ? allArticles.filter(article => 
+          article.tags?.toLowerCase().includes(selectedTag.toLowerCase())
+        )
+      : allArticles
 
     return (
       <>
@@ -16,7 +26,12 @@ export default async function Articles() {
             <h1>Les aventures d'honey drop</h1>
             <SimpleDate />
           </div>
-          {articles.map((article, index) => (
+          {articles.length === 0 ? (
+            <div className="flex items-center justify-center">
+              <p className="text-xl font-medium">Pas encore d'articles disponibles...</p>
+            </div>
+          ) : (
+            articles.slice(0,4).map((article, index) => (
             <div
               key={index}
               className={`flex w-full h-80 gap-6 items-stretch ${index % 2 !== 0 ? 'flex-row-reverse' : ''}`}
@@ -52,7 +67,7 @@ export default async function Articles() {
                 </div>
               </div>
             </div>
-          ))}
+          )))}
         </div>
       </>
     );
@@ -61,3 +76,40 @@ export default async function Articles() {
     return <p>Erreur pendant le chargement (jsp pq frr....)</p>;
   }
 }
+
+// Ajouter en haut du fichier (ligne 1) :
+  // 'use client'
+
+  // Modifier les imports (après la ligne 2) :
+  // import React, { useState, useEffect } from 'react'
+
+  // Remplacer les lignes 11-20 par :
+  // export default function Articles({ selectedTag }: ArticlesProps) {
+  //   const [allArticles, setAllArticles] = useState([])
+  //   const [loading, setLoading] = useState(true)
+  //   const [error, setError] = useState(null)
+  //
+  //   useEffect(() => {
+  //     const loadArticles = async () => {
+  //       try {
+  //         setLoading(true)
+  //         const data = await fetchArticles()
+  //         setAllArticles(data)
+  //       } catch (err) {
+  //         console.error("Erreur lors du chargement :", err)
+  //         setError(err)
+  //         setAllArticles(query.data.testgraphqlvuesGraphql1.results)
+  //       } finally {
+  //         setLoading(false)
+  //       }
+  //     }
+  //     loadArticles()
+  //   }, [])
+  //
+  //   if (loading) {
+  //     return (
+  //       <div className="flex items-center justify-center h-80 border-3 border-black">
+  //         <p className="text-xl font-medium">Chargement des articles...</p>
+  //       </div>
+  //     )
+  //   }
