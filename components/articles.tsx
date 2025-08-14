@@ -1,3 +1,5 @@
+'use client'
+import React, { useState, useEffect } from 'react'
 import Image from "next/image";
 import { newsreader, montserrat } from "../lib/font";
 import { fetchArticles } from "../lib/data";
@@ -8,13 +10,46 @@ interface ArticlesProps {
   selectedTag?: string | null;
 }
 
+interface Article {
+
+}
+
 export default function Articles({ selectedTag }: ArticlesProps) {
-  try {
+
+    const [allArticles, setAllArticles] = useState<Article[]>([])
+      const [loading, setLoading] = useState(true)
+      const [error, setError] = useState(null)
+
+      useEffect(() => {
+        const loadArticles = async () => {
+          try {
+            setLoading(true)
+            const data = await fetchArticles()
+            setAllArticles(data)
+          } catch (err) {
+            console.error("Erreur lors du chargement :", err)
+            setAllArticles(query.data.testgraphqlvuesGraphql1.results)
+          } finally {
+            setLoading(false)
+          }
+        }
+        loadArticles()
+      }, [])
+
+      if (loading) {
+        return (
+          <div className="flex items-center justify-center h-80 border-3 border-black">
+            <p className="text-xl font-medium">Chargement des articles...</p>
+          </div>
+        )
+      }
+
+
     // const articles = await fetchArticles(); // Utiliser ça au taff pour drupal pcq a la maison j'ai pas la db
-    const allArticles = query.data.testgraphqlvuesGraphql1.results
-    
-    const articles = selectedTag 
-      ? allArticles.filter(article => 
+    //const allArticles = query.data.testgraphqlvuesGraphql1.results
+
+    const articles = selectedTag
+      ? allArticles.filter(article =>
           article.tags?.toLowerCase().includes(selectedTag.toLowerCase())
         )
       : allArticles
@@ -71,10 +106,6 @@ export default function Articles({ selectedTag }: ArticlesProps) {
         </div>
       </>
     );
-  } catch (error) {
-    console.error("erreur :", error);
-    return <p>Erreur pendant le chargement (jsp pq frr....)</p>;
-  }
 }
 
 // Ajouter en haut du fichier (ligne 1) :
