@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { newsreader, montserrat } from "../lib/font";
 import { fetchArticles } from "../lib/data";
-import { query } from "@/lib/query";
 import SimpleDate from "./date";
 
 interface ArticlesProps {
@@ -17,9 +16,17 @@ export default async function Articles({ selectedTag }: ArticlesProps) {
     //const allArticles = query.data.testgraphqlvuesGraphql1.results
 
     const articles = selectedTag
-      ? allArticles.filter(article =>
-          article.tags?.toLowerCase().includes(selectedTag.toLowerCase())
-        )
+      ? allArticles.filter(article => {
+          if (!article.tags) return false;
+          
+          const normalizeTag = (tag: string) => tag.toLowerCase().trim().replace(/\s+/g, ' ');
+          const normalizedArticleTags = normalizeTag(article.tags);
+          const normalizedSelectedTag = normalizeTag(selectedTag);
+          
+          return normalizedArticleTags.split(/[,&]/).some(tag => 
+            normalizeTag(tag).includes(normalizedSelectedTag)
+          );
+        })
       : allArticles
 
     return (
