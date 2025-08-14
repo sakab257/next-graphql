@@ -1,5 +1,3 @@
-'use client'
-import React, { useState, useEffect } from 'react'
 import Image from "next/image";
 import { newsreader, montserrat } from "../lib/font";
 import { fetchArticles } from "../lib/data";
@@ -10,46 +8,12 @@ interface ArticlesProps {
   selectedTag?: string | null;
 }
 
-interface Article {
-  title: string;
-  body?: string;
-  tags?: string;
-  image?: string;
-}
 
-export default function Articles({ selectedTag }: ArticlesProps) {
-
-    const [allArticles, setAllArticles] = useState<Article[]>([])
-      const [loading, setLoading] = useState(true)
-      const [error, setError] = useState<string | null>(null)
-
-      useEffect(() => {
-        const loadArticles = async () => {
-          try {
-            setLoading(true)
-            const data = await fetchArticles()
-            setAllArticles(data)
-          } catch (err) {
-            console.error("Erreur lors du chargement :", err)
-            setError(err instanceof Error ? err.message : 'Une erreur est survenue')
-            setAllArticles(query.data.testgraphqlvuesGraphql1.results)
-          } finally {
-            setLoading(false)
-          }
-        }
-        loadArticles()
-      }, [])
-
-      if (loading) {
-        return (
-          <div className="flex items-center justify-center h-80 border-3 border-black">
-            <p className="text-xl font-medium">Chargement des articles...</p>
-          </div>
-        )
-      }
+export default async function Articles({ selectedTag }: ArticlesProps) {
 
 
-    // const articles = await fetchArticles(); // Utiliser ça au taff pour drupal pcq a la maison j'ai pas la db
+
+    const allArticles = await fetchArticles(); // Utiliser ça au taff pour drupal pcq a la maison j'ai pas la db
     //const allArticles = query.data.testgraphqlvuesGraphql1.results
 
     const articles = selectedTag

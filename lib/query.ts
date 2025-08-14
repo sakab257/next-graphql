@@ -3,7 +3,7 @@ export const query = {
     "testgraphqlvuesGraphql1": {
       "results": [
         {
-          "body": "Hier, au coeur du quartier, un individu est entré dans la boulangerie Kayser armé de son fusil à eau. Après s'être exclamé 'Donne moi tout le Selecto ou je t'arrose !', le commerçant lui a simplement tendu une assiette de Makrout en lui disant : 'Je sais que ça va mal, tiens... pour te remonter le moral'. Le suspect s'en alla en pleurant tellement que les makrout sont devenus tout moux. La police est toujours à la recherche du suspect, désormais connu comme 'El Bandito, la Terreur au Selecto'",
+          "body": "",
           "image": "/ali_biceps.png",//"/sites/default/files/2025-08/greece.jpg"
           "title": "Mutation du corps d'Ali... Son biceps prend vie !",
           "tags": "ali"
