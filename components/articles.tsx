@@ -18,12 +18,12 @@ export default async function Articles({ selectedTag }: ArticlesProps) {
     const articles = selectedTag
       ? allArticles.filter(article => {
           if (!article.tags) return false;
-          
+
           const normalizeTag = (tag: string) => tag.toLowerCase().trim().replace(/\s+/g, ' ');
           const normalizedArticleTags = normalizeTag(article.tags);
           const normalizedSelectedTag = normalizeTag(selectedTag);
-          
-          return normalizedArticleTags.split(/[,&]/).some(tag => 
+
+          return normalizedArticleTags.split(/[,&]/).some(tag =>
             normalizeTag(tag).includes(normalizedSelectedTag)
           );
         })
@@ -49,7 +49,7 @@ export default async function Articles({ selectedTag }: ArticlesProps) {
               {article.image && (
                 <div className="flex-shrink-0 w-1/5 h-full">
                   <Image
-                    src={`${article.image}`} // mettre ${article.image quand pas acces au back drupal} http://localhost:8084
+                      src={`http://localhost:8084${article.image}`} // mettre ${article.image quand pas acces au back drupal} http://localhost:8084
                     alt={article.title}
                     width={500}
                     height={300}
