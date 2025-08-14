@@ -1,33 +1,70 @@
+'use client'
 import Image from "next/image";
 import { newsreader, montserrat } from "../lib/font";
 import { fetchArticles } from "../lib/data";
+import { query } from "@/lib/query";
 import SimpleDate from "./date";
+import { useState, useEffect } from "react";
 
 interface ArticlesProps {
   selectedTag?: string | null;
 }
 
+interface Article {
+  body?: string;
+  image?: string;
+  title: string;
+  tags?: string;
+}
 
-export default async function Articles({ selectedTag }: ArticlesProps) {
+export default function Articles({ selectedTag }: ArticlesProps) {
+    const [allArticles, setAllArticles] = useState<Article[]>([]);
+    const [loading, setLoading] = useState(true);
 
+    useEffect(() => {
+        const loadArticles = async () => {
+            try {
+                const articles = await fetchArticles(); // Utiliser ça au taff pour drupal pcq a la maison j'ai pas la db
+                setAllArticles(articles);
+            } catch (error) {
+                console.log("Utilisation des données statiques car l'API n'est pas disponible");
+                setAllArticles(query.data.testgraphqlvuesGraphql1.results);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-
-    const allArticles = await fetchArticles(); // Utiliser ça au taff pour drupal pcq a la maison j'ai pas la db
-    //const allArticles = query.data.testgraphqlvuesGraphql1.results
+        loadArticles();
+    }, []);
 
     const articles = selectedTag
       ? allArticles.filter(article => {
           if (!article.tags) return false;
 
-          const normalizeTag = (tag: string) => tag.toLowerCase().trim().replace(/\s+/g, ' ');
-          const normalizedArticleTags = normalizeTag(article.tags);
+          const normalizeTag = (tag: string) => tag.toLowerCase().trim();
           const normalizedSelectedTag = normalizeTag(selectedTag);
-
-          return normalizedArticleTags.split(/[,&]/).some(tag =>
-            normalizeTag(tag).includes(normalizedSelectedTag)
-          );
+          
+          // Séparer les tags par virgule et par &
+          const articleTags = article.tags.split(/[,&]/).map(tag => normalizeTag(tag));
+          
+          // Vérifier si le tag sélectionné correspond exactement à l'un des tags de l'article
+          return articleTags.some(tag => tag === normalizedSelectedTag);
         })
       : allArticles
+
+    if (loading) {
+        return (
+            <div className="space-y-8">
+                <div className="flex items-center justify-between w-full border-b-2 border-black text-2xl uppercase">
+                    <h1>Les aventures d'honey drop</h1>
+                    <SimpleDate />
+                </div>
+                <div className="flex items-center justify-center">
+                    <p className="text-xl font-medium">Chargement des articles...</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
       <>
@@ -41,7 +78,7 @@ export default async function Articles({ selectedTag }: ArticlesProps) {
               <p className="text-xl font-medium">Pas encore d'articles disponibles...</p>
             </div>
           ) : (
-            articles.slice(0,4).map((article, index) => (
+            articles.map((article, index) => (
             <div
               key={index}
               className={`flex w-full h-80 gap-6 items-stretch ${index % 2 !== 0 ? 'flex-row-reverse' : ''}`}
