@@ -11,14 +11,17 @@ interface ArticlesProps {
 }
 
 interface Article {
-
+  title: string;
+  body?: string;
+  tags?: string;
+  image?: string;
 }
 
 export default function Articles({ selectedTag }: ArticlesProps) {
 
     const [allArticles, setAllArticles] = useState<Article[]>([])
       const [loading, setLoading] = useState(true)
-      const [error, setError] = useState(null)
+      const [error, setError] = useState<string | null>(null)
 
       useEffect(() => {
         const loadArticles = async () => {
@@ -28,6 +31,7 @@ export default function Articles({ selectedTag }: ArticlesProps) {
             setAllArticles(data)
           } catch (err) {
             console.error("Erreur lors du chargement :", err)
+            setError(err instanceof Error ? err.message : 'Une erreur est survenue')
             setAllArticles(query.data.testgraphqlvuesGraphql1.results)
           } finally {
             setLoading(false)
@@ -107,40 +111,3 @@ export default function Articles({ selectedTag }: ArticlesProps) {
       </>
     );
 }
-
-// Ajouter en haut du fichier (ligne 1) :
-  // 'use client'
-
-  // Modifier les imports (après la ligne 2) :
-  // import React, { useState, useEffect } from 'react'
-
-  // Remplacer les lignes 11-20 par :
-  // export default function Articles({ selectedTag }: ArticlesProps) {
-  //   const [allArticles, setAllArticles] = useState([])
-  //   const [loading, setLoading] = useState(true)
-  //   const [error, setError] = useState(null)
-  //
-  //   useEffect(() => {
-  //     const loadArticles = async () => {
-  //       try {
-  //         setLoading(true)
-  //         const data = await fetchArticles()
-  //         setAllArticles(data)
-  //       } catch (err) {
-  //         console.error("Erreur lors du chargement :", err)
-  //         setError(err)
-  //         setAllArticles(query.data.testgraphqlvuesGraphql1.results)
-  //       } finally {
-  //         setLoading(false)
-  //       }
-  //     }
-  //     loadArticles()
-  //   }, [])
-  //
-  //   if (loading) {
-  //     return (
-  //       <div className="flex items-center justify-center h-80 border-3 border-black">
-  //         <p className="text-xl font-medium">Chargement des articles...</p>
-  //       </div>
-  //     )
-  //   }
