@@ -81,12 +81,12 @@ export default function Articles({ selectedTag }: ArticlesProps) {
             articles.map((article, index) => (
             <div
               key={index}
-              className={`flex w-full h-80 gap-6 items-stretch ${index % 2 !== 0 ? 'flex-row-reverse' : ''}`}
+              className={`flex w-full h-80 gap-6 pb-2 items-stretch ${index % 2 !== 0 ? 'flex-row-reverse' : ''}`}
             >
               {article.image && (
                 <div className="flex-shrink-0 w-1/5 h-full">
                   <Image
-                      src={`http://localhost:8084${article.image}`} // mettre ${article.image quand pas acces au back drupal} http://localhost:8084
+                      src={`${article.image}`} // mettre ${article.image quand pas acces au back drupal} http://localhost:8084
                     alt={article.title}
                     width={500}
                     height={300}
