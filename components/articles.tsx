@@ -28,7 +28,8 @@ export default function Articles({ selectedTag }: ArticlesProps) {
                 setAllArticles(articles);
                 // setAllArticles(query.data.testgraphqlvuesGraphql1.results);
             } catch (error) {
-                setAllArticles(query.data.testgraphqlvuesGraphql1.results);
+              // console.log(error);
+              setAllArticles(query.data.viewsArticle.results);
             } finally {
                 setLoading(false);
             }
@@ -43,10 +44,10 @@ export default function Articles({ selectedTag }: ArticlesProps) {
 
           const normalizeTag = (tag: string) => tag.toLowerCase().trim();
           const normalizedSelectedTag = normalizeTag(selectedTag);
-          
+
           // Séparer les tags par virgule et par &
           const articleTags = article.tags.split(/[,&]/).map(tag => normalizeTag(tag));
-          
+
           // Vérifier si le tag sélectionné correspond exactement à l'un des tags de l'article
           return articleTags.some(tag => tag === normalizedSelectedTag);
         })
@@ -86,7 +87,7 @@ export default function Articles({ selectedTag }: ArticlesProps) {
               {article.image && (
                 <div className="w-1/6 h-full">
                   <Image
-                      src={`http://localhost:8084${article.image}`} // mettre ${article.image quand pas acces au back drupal} http://localhost:8084
+                    src={`http://localhost:8084${article.image}`} // mettre ${article.image quand pas acces au back drupal} http://localhost:8084
                     alt={article.title}
                     width={500}
                     height={300}

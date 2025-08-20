@@ -6,7 +6,7 @@ const Navbar = () => {
     <div className='w-full text-black overflow-hidden mt-3 -mb-5'>
       <CurvedLoop
         marqueeText="Honey ✦ Drop ✦ News ✦"
-        speed={0.5}
+        speed={1}
         curveAmount={20}
         direction="left"
         interactive={true}

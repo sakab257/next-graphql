@@ -7,7 +7,7 @@ interface Article {
 
 interface GraphQLResponse {
   data: {
-    testgraphqlvuesGraphql1: {
+    viewsArticle: {
       results: Article[];
     };
   };
@@ -19,12 +19,12 @@ export const fetchArticles = async () => {
   let hasMorePages = true;
 
   while (hasMorePages) {
-    const query = `{testgraphqlvuesGraphql1(page: ${page}){results{body,image,title,tags}}}`;
+    const query = `{viewsArticle(page: ${page}){results{body,image,title,tags}}}`;
     const data = await fetch(`/api/graphql?query=${encodeURIComponent(query)}`);
     const response: GraphQLResponse = await data.json();
-    
-    const pageResults = response.data.testgraphqlvuesGraphql1.results;
-    
+
+    const pageResults = response.data.viewsArticle.results;
+
     if (pageResults && pageResults.length > 0) {
       allArticles = [...allArticles, ...pageResults];
       page++;
