@@ -57,7 +57,7 @@ export default function Articles({ selectedTag }: ArticlesProps) {
         return (
             <div className="space-y-8">
                 <div className="flex items-center justify-between w-full border-b-2 border-black text-2xl uppercase">
-                    <h1>Les aventures d&aposhoney drop</h1>
+                    <h1>{`Les aventures d'honey drop`}</h1>
                     <SimpleDate />
                 </div>
                 <div className="flex items-center justify-center">
@@ -71,12 +71,12 @@ export default function Articles({ selectedTag }: ArticlesProps) {
       <>
         <div className="space-y-8">
           <div className="flex items-center justify-between w-full border-b-2 border-black text-2xl uppercase">
-            <h1>Les aventures d&aposhoney drop</h1>
+            <h1>{`Les aventures d'honey drop`}</h1>
             <SimpleDate />
           </div>
           {articles.length === 0 ? (
             <div className="flex items-center justify-center">
-              <p className="text-xl font-medium">Pas encore d&aposarticles disponibles...</p>
+              <p className="text-xl font-medium">{`Pas encore d'articles disponibles...`}</p>
             </div>
           ) : (
             articles.map((article, index) => (
