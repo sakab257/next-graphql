@@ -24,9 +24,9 @@ export default function Articles({ selectedTag }: ArticlesProps) {
     useEffect(() => {
         const loadArticles = async () => {
             try {
-                const articles = await fetchArticles(); // Utiliser ça au taff pour drupal pcq a la maison j'ai pas la db
-                setAllArticles(articles);
-                // setAllArticles(query.data.testgraphqlvuesGraphql1.results);
+                // const articles = await fetchArticles(); // Utiliser ça au taff pour drupal pcq a la maison j'ai pas la db
+                // setAllArticles(articles);
+                setAllArticles(query.data.viewsArticle.results);
             } catch (error) {
               // console.log(error);
               setAllArticles(query.data.viewsArticle.results);
@@ -87,7 +87,7 @@ export default function Articles({ selectedTag }: ArticlesProps) {
               {article.image && (
                 <div className="w-1/6 h-full">
                   <Image
-                    src={`http://localhost:8084${article.image}`} // mettre ${article.image quand pas acces au back drupal} http://localhost:8084
+                    src={`${article.image}`} // mettre ${article.image quand pas acces au back drupal} http://localhost:8084
                     alt={article.title}
                     width={500}
                     height={300}
