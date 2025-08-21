@@ -14,7 +14,7 @@ const Equipe = ({ onTagSelect, selectedTag }: EquipeProps) => {
         onClick={() => onTagSelect(null)}
         className={`w-full font-medium uppercase hover:bg-black hover:text-white hover:border-black px-4 py-3 flex justify-center gap-2 items-center transition-all cursor-pointer border-3 box-border ${selectedTag === null ? 'bg-black text-white border-black border-b-3' : ''}`}
       >
-        <span className='text-2xl'>✨</span> L'équipe <span className='text-2xl'>✨</span>
+        <span className='text-2xl'>✨</span> L&aposéquipe <span className='text-2xl'>✨</span>
       </div>
       {personnes.map((personne, index)=>{
         const isSelected = selectedTag === personne
