@@ -14,5 +14,5 @@ export default function SimpleDate() {
     setDate(formattedDate)
   }, [])
 
-  return <p className='text-lg capitalize'>{date}</p>
+  return <p className='capitalize'>{date}</p>
 }

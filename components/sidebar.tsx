@@ -9,12 +9,13 @@ interface SidebarProps {
 const Sidebar = ({ onTagSelect, selectedTag }: SidebarProps) => {
   return (
     <>
-      <div className='w-full h-dvh flex flex-col border-black sticky top-1 gap-3'>
+      {/* Version XL+ : sidebar verticale actuelle */}
+      <div className='hidden xl:flex xl:w-full xl:h-dvh xl:flex-col xl:border-black xl:sticky xl:top-1 xl:gap-3'>
         <div className='flex flex-col h-full'>
           <Equipe onTagSelect={onTagSelect} selectedTag={selectedTag} />
         </div>
       </div>
-      
+
     </>
   )
 }

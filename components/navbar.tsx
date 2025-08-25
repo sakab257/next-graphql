@@ -3,7 +3,7 @@ import CurvedLoop from './loop';
 
 const Navbar = () => {
   return (
-    <div className='w-full text-black overflow-hidden mt-3 -mb-5'>
+    <div className='w-full text-black mt-3 xl:-mb-5'>
       <CurvedLoop
         marqueeText="Honey ✦ Drop ✦ News ✦"
         speed={1}
