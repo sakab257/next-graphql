@@ -76,7 +76,7 @@ export default function Articles({ selectedTag, onTagSelect }: ArticlesProps) {
             <h1>{`Les aventures d'honey drop`}</h1>
             <SimpleDate />
           </div>
-          
+
           {/* Sidebar horizontale pour < XL */}
           {onTagSelect && (
             <div className='xl:hidden w-full'>
@@ -95,11 +95,11 @@ export default function Articles({ selectedTag, onTagSelect }: ArticlesProps) {
               key={index}
               className={`
                 w-full border-3 border-black mb-4
-                
+
                 // Layout pour xl+: disposition horizontale actuelle
                 xl:flex xl:gap-6 xl:items-center xl:h-max xl:border-none
                 ${index % 2 !== 0 ? 'xl:flex-row-reverse' : ''}
-                
+
                 // Layout pour md/lg: disposition verticale avec parties haute et basse
                 md:flex md:flex-col md:h-auto lg:flex lg:flex-col lg:h-auto
               `}
@@ -161,7 +161,7 @@ export default function Articles({ selectedTag, onTagSelect }: ArticlesProps) {
                         </p>
                       </div>
                     )}
-                    <h2 className={`text-xs md:text-lg font-bold leading-tight uppercase text-center ${newsreader.className}`}>
+                    <h2 className={`text-sm relative top-3 md:top-0 md:text-3xl font-bold leading-tight uppercase text-center ${newsreader.className}`}>
                       {article.title}
                     </h2>
                   </div>
