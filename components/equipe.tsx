@@ -6,7 +6,7 @@ interface EquipeProps {
 }
 
 const Equipe = ({ onTagSelect, selectedTag }: EquipeProps) => {
-  const personnes = ['bilel', 'aichatou', 'ange', 'alice', 'johana', 'ali','salim','thomas','mohammed']
+  const personnes = ['peter','bilel', 'aichatou', 'ange', 'alice', 'johana', 'ali','salim','thomas','mohammed']
   
   return (
     <>
